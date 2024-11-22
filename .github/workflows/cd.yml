@@ -60,6 +60,6 @@ jobs:
       - name: Build
         run: docker build -t rails-app .
       - name: Tag
-        run: docker tag rails-app:latest ${{ env.ECR_REPOSITORY_URI }}/rails-app:latest
+        run: docker tag rails-app:latest ${{ env.ECR_REPOSITORY_URI }}:latest
       - name: Push
-        run: docker push ${{ env.ECR_REPOSITORY_URI }}/rails-app:latest
+        run: docker push ${{ env.ECR_REPOSITORY_URI }}:latest
