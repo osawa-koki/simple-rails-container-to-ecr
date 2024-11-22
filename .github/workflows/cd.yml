@@ -40,7 +40,7 @@ jobs:
         run: cdk deploy
   app:
     runs-on: ubuntu-22.04
-    depends: infra
+    needs: infra
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
