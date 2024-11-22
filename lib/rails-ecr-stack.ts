@@ -9,8 +9,13 @@ export class RailsEcrStack extends cdk.Stack {
     // The code that defines your stack goes here
 
     // example resource
-    new ecr.Repository(this, 'RailsAppRepository', {
+    const repository = new ecr.Repository(this, 'RailsAppRepository', {
       repositoryName: 'rails-app',
+    });
+
+    new cdk.CfnOutput(this, 'RepositoryURI', {
+      value: repository.repositoryUri,
+      description: 'The URI of the ECR repository',
     });
   }
 }
