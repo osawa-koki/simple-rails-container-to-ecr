@@ -41,6 +41,9 @@ jobs:
   app:
     runs-on: ubuntu-22.04
     needs: infra
+    defaults:
+      run:
+        working-directory: ./rails-app/
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -55,11 +58,9 @@ jobs:
           export ECR_REPOSITORY_URI=$(aws ecr describe-repositories --repository-names rails-app --query 'repositories[0].repositoryUri' --output text)
           echo "ECR_REPOSITORY_URI=$ECR_REPOSITORY_URI" >> $GITHUB_ENV
       - name: Create master key
-        run: |
-          cd ./rails-app/
-          echo ${{ secrets.MASTER_KEY }} > ./config/master.key
+        run: echo ${{ secrets.MASTER_KEY }} > ./config/master.key
       - name: Build
-        run: docker build -t rails-app ./rails-app/
+        run: docker build -t rails-app .
       - name: Tag
         run: docker tag rails-app:latest ${{ env.ECR_REPOSITORY_URI }}/rails-app:latest
       - name: Push
