@@ -50,5 +50,5 @@ ECRにプッシュしたイメージをローカルでテストしたい場合�
 ```shell
 export ECR_REPOSITORY_URI=$(aws ecr describe-repositories --repository-names rails-app --query 'repositories[0].repositoryUri' --output text)
 aws ecr get-login-password | docker login --username AWS --password-stdin $ECR_REPOSITORY_URI
-docker run --rm -p 3000:3000 --name rails_app -e SECRET_KEY_BASE=HOGE $ECR_REPOSITORY_URI:latest
+docker run --rm -p 3000:3000 --name rails_app -e SECRET_KEY_BASE=HOGE -e BINDING=0.0.0.0 $ECR_REPOSITORY_URI:latest
 ```
