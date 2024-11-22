@@ -1,6 +1,6 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
+import * as ecr from 'aws-cdk-lib/aws-ecr';
 
 export class RailsEcrStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -9,8 +9,8 @@ export class RailsEcrStack extends cdk.Stack {
     // The code that defines your stack goes here
 
     // example resource
-    // const queue = new sqs.Queue(this, 'RailsEcrQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
+    new ecr.Repository(this, 'RailsAppRepository', {
+      repositoryName: 'rails-app',
+    });
   }
 }
