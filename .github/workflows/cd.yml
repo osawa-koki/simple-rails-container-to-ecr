@@ -59,6 +59,8 @@ jobs:
           echo "ECR_REPOSITORY_URI=$ECR_REPOSITORY_URI" >> $GITHUB_ENV
       - name: Create master key
         run: echo ${{ secrets.MASTER_KEY }} > ./config/master.key
+      - name: Debug
+        run: cat ./config/master.key
       - name: Build
         run: docker build -t rails-app .
       - name: Tag
