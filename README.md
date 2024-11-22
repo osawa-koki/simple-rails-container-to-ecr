@@ -6,6 +6,8 @@
 [![cd](https://github.com/osawa-koki/simple-rails-container-to-ecr/actions/workflows/cd.yml/badge.svg)](https://github.com/osawa-koki/simple-rails-container-to-ecr/actions/workflows/cd.yml)
 [![Dependabot Updates](https://github.com/osawa-koki/simple-rails-container-to-ecr/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/osawa-koki/simple-rails-container-to-ecr/actions/workflows/dependabot/dependabot-updates)
 
+![成果物](./fruit.gif)  
+
 ## 実行方法
 
 DevContainerに入ります。  
